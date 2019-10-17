@@ -17,6 +17,8 @@ RUN \
   && apt-get -y install --no-install-recommends neovim \
   # dos2unix for config files of windows user
   && apt-get -y install --no-install-recommends dos2unix \
+  # vue-cli
+  && yarn global add @vue/cli \
   # Clean up
   && apt-get autoremove -y \
   && apt-get clean -y \
