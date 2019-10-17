@@ -63,7 +63,7 @@ services:
       # - $HOME/.gitconfig:/root/.home-localhost/.gitconfig:ro
       ##! Fix for windows (can't mount single files)
       ##comment all the other `.home-localhost` lines above this
-      # - $HOME:/root/.home-localhost:ro
+      - /c/Users/Joe/AppData/Roaming/.home:/root/.home-localhost:ro
 
     # just extends service: webapp
     working_dir: /app
@@ -109,4 +109,4 @@ volumes:
   db-volume:
   node_modules-volume:
   # used for keeeping vscode-extensions while rebuilding
-  # vscode-extensions:
+  vscode-extensions:

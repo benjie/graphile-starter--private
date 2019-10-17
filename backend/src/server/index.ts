@@ -1,10 +1,13 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
 import * as express from "express";
+import { Nuxt, Builder } from "nuxt";
 import chalk from "chalk";
 import { createServer } from "http";
 import { sanitiseEnv } from "./utils";
 import * as middleware from "./middleware";
+// Import and Set Nuxt.js options
+import config from "../nuxtjs/nuxt.config";
 
 // @ts-ignore
 const packageJson = require("../../../package.json");
@@ -14,6 +17,12 @@ async function main() {
 
   const isTest = process.env.NODE_ENV === "test";
   const isDev = process.env.NODE_ENV === "development";
+
+  /*
+   * Init Nuxt.js
+   */
+  const nuxt = new Nuxt(config);
+  const { port } = nuxt.options.server;
 
   /*
    * Our Express server
@@ -29,6 +38,19 @@ async function main() {
 
   if (isDev) {
     shutdownActions.push(() => require("inspector").close());
+
+    /*
+     * Build nuxtjs only in dev mode
+     */
+    const builder = new Builder(nuxt);
+    /*
+     * Don’t `await` for the builder.build().
+     * This is because if you did await its execution
+     * you wouldn’t see Nuxt’s loading screen.
+     */
+    builder.build();
+  } else {
+    await nuxt.ready();
   }
 
   /*
@@ -62,7 +84,14 @@ async function main() {
     await middleware.installCypressServerCommand(app);
   }
   await middleware.installPostGraphile(app);
-  await middleware.installNext(app);
+
+  /*
+   * Give nuxt middleware to express
+   ! Needs to be placed after `middleware.installPostGraphile`
+   ! otherwise postgraphile routes won't work
+   */
+  ////  await middleware.installNext(app);
+  app.use(nuxt.render);
 
   /*
    * Error handling middleware
@@ -70,33 +99,27 @@ async function main() {
   await middleware.installErrorHandler(app);
 
   // And finally, we open the listen port
-  const PORT = parseInt(process.env.PORT || "", 10) || 3000;
+  const PORT = parseInt(port || "", 10) || 3000;
   httpServer.listen(PORT, () => {
-    const address = httpServer.address();
-    const actualPort: string =
-      typeof address === "string"
-        ? address
-        : address && address.port
-        ? String(address.port)
-        : String(PORT);
-    console.log();
-    console.log(
-      chalk.green(
-        `${chalk.bold(packageJson.name)} listening on port ${chalk.bold(
-          actualPort
-        )}`
-      )
-    );
-    console.log();
-    console.log(
-      `  Site:     ${chalk.bold.underline(`http://localhost:${actualPort}`)}`
-    );
-    console.log(
-      `  GraphiQL: ${chalk.bold.underline(
-        `http://localhost:${actualPort}/graphiql`
-      )}`
-    );
-    console.log();
+    // _address not used because we don't need the docker-intern network id
+    const _address = httpServer.address().address;
+    //TODO: const actualPort = "8080"; // as configured in docker-compose.yml
+    const actualPort = PORT;
+    consola.ready({
+      message: `
+        ${chalk.bold(packageJson.name)} listening on port ${chalk.bold(
+        actualPort
+      )}
+        Site:     ${chalk.bold.underline(`http://localhost:${actualPort}`)}
+        GraphiQL: ${chalk.bold.underline(
+          `http://localhost:${actualPort}/api/graphiql`
+        )}
+        GraphQL: ${chalk.bold.underline(
+          `http://localhost:${actualPort}/api/graphql`
+        )}
+        `,
+      badge: true,
+    });
   });
 
   // Nodemon SIGUSR2 handling

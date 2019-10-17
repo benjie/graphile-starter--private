@@ -1,0 +1,18 @@
+/* server/tsconfig.json */
+/* this is a basic tsconfig.json file. You can add to/remove and modify everything except the module option */
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "noEmit": true,
+
+    "strict": true,
+
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "esModuleInterop": true
+  }
+}

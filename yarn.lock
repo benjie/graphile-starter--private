@@ -1738,7 +1738,7 @@
     serve-static "^1.14.1"
     server-destroy "^1.0.1"
 
-"@nuxt/types@0.3.1":
+"@nuxt/types@0.3.1", "@nuxt/types@^0.3.1":
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@nuxt/types/-/types-0.3.1.tgz#b6e133a57f740032743206861e51f762bcbbe89b"
   integrity sha512-Ee8vRb6+OU+GttbYiHlvSa9UbOMvHdTIZw6XYbFidUYhSbyWbEtP6iOjql4OPntcSNufM4S2WyDvXKErvh/SEA==
@@ -4870,6 +4870,13 @@ create-react-context@0.2.2:
   dependencies:
     fbjs "^0.8.0"
     gud "^1.0.0"
+
+cross-env@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-6.0.3.tgz#4256b71e49b3a40637a0ce70768a6ef5c72ae941"
+  integrity sha512-+KqxF6LCvfhWvADcDPqo64yVIB31gv/jQulX2NGzKS/g3GEVz6/pt4wjHFtFWsHMddebWD/sDthJemzM4MaAag==
+  dependencies:
+    cross-spawn "^7.0.0"
 
 cross-fetch@2.2.2:
   version "2.2.2"

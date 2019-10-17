@@ -4,19 +4,31 @@
   "version": "2.10.1",
   "private": true,
   "dependencies": {
-    "@nuxtjs/axios": "5.6.0",
+    "@nuxt/types": "^0.3.1",
     "@nuxt/typescript-runtime": "0.2.1",
+    "@nuxtjs/axios": "5.6.0",
     "nuxt": "2.10.1",
     "nuxt-property-decorator": "2.4.0",
     "vuex-class": "0.3.2"
   },
   "scripts": {
+    "ts-start": "cross-env NODE_ENV=production ts-node --project '../server/tsconfig.json' server/index.ts",
+    "ts-dev": "cross-env nodemon ../server/index.ts",
+    "------------": "-------------",
+    "dev-watch": "npx concurrently --raw --kill-others --names server,graphile-worker yarn:start:dev yarn:watch:tasks",
+    "//start:dev": "cross-env NODE_ENV=development HOST=0.0.0.0 DEBUG=graphile-build:warn nodemon --delay 250ms --exec 'yarn dev:inspector:kill && yarn dev:inspector:start' --watch server",
+    "start:server": "cross-env NODE_ENV=production HOST=0.0.0.0 node server/index.js",
+    "dev:boot": "ts-node --inspect=0.0.0.0:9229 ../server/index.ts ",
+    "dev:inspector:kill": "kill-port --port 9229",
+    "-----------": "-------------",
     "dev": "nuxt-ts",
     "build": "nuxt-ts build",
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate"
   },
   "devDependencies": {
-    "@nuxt/typescript-build": "0.3.1"
+    "@nuxt/types": "^0.3.1",
+    "@nuxt/typescript-build": "0.3.1",
+    "cross-env": "^6.0.3"
   }
 }
