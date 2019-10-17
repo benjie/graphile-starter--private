@@ -1,5 +1,5 @@
 {
-  "name": "graphile-starter",
+  "name": "@graphile-starter/nuxtjs",
   "description": "graphile starter using nuxt.js w/ TS",
   "version": "2.10.1",
   "private": true,

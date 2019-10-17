@@ -2,6 +2,7 @@
   "name": "My_Project_Here",
   "version": "1.0.1",
   "private": true,
+  "workspaces": ["backend/src/nuxtjs"],
   "description": "Description of project here",
   "scripts": {
     "setup": "./scripts/setup",
