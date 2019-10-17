@@ -34,6 +34,7 @@
     "pranaygp.vscode-css-peek",
     "codemooseus.vscode-devtools-for-chrome",
     "wix.vscode-import-cost",
-    "cancerberosgx.vscode-typescript-refactors"
+    "cancerberosgx.vscode-typescript-refactors",
+    "steoates.autoimport"
   ]
 }
