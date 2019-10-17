@@ -18,7 +18,7 @@ RUN \
   # dos2unix for config files of windows user
   && apt-get -y install --no-install-recommends dos2unix \
   # vue-cli
-  && yarn global add @vue/cli \
+  && yarn global add @vue/cli @vue/cli-init \
   # Clean up
   && apt-get autoremove -y \
   && apt-get clean -y \

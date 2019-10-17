@@ -1,0 +1,22 @@
+{
+  "name": "graphile-starter",
+  "description": "graphile starter using nuxt.js w/ TS",
+  "version": "2.10.1",
+  "private": true,
+  "dependencies": {
+    "@nuxtjs/axios": "5.6.0",
+    "@nuxt/typescript-runtime": "0.2.1",
+    "nuxt": "2.10.1",
+    "nuxt-property-decorator": "2.4.0",
+    "vuex-class": "0.3.2"
+  },
+  "scripts": {
+    "dev": "nuxt-ts",
+    "build": "nuxt-ts build",
+    "start": "nuxt-ts start",
+    "generate": "nuxt-ts generate"
+  },
+  "devDependencies": {
+    "@nuxt/typescript-build": "0.3.1"
+  }
+}
