@@ -17,6 +17,10 @@ export default {
   css: ["~/assets/css/main.css"],
   build: {},
   buildModules: ["@nuxt/typescript-build"],
-  modules: ["@nuxtjs/apollo", "~/modules/nuxt-postgraphile", "@nuxtjs/axios"],
+  modules: [
+    "~/modules/nuxt-postgraphile",
+    "@nuxtjs/axios",
+    /* "@nuxtjs/apollo", */
+  ],
   axios: {},
 };
