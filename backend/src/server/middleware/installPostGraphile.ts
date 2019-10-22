@@ -78,6 +78,9 @@ export function getPostGraphileOptions({
     // setofFunctionsContainNulls=false: reduces the number of nulls in your schema
     setofFunctionsContainNulls: false,
 
+    // The endpoint the GraphQL executer will listen on. Defaults to /graphql.
+    graphqlRoute: process.env.GRAPHQL_ROUTE || "/graphql",
+
     // Enable GraphiQL in development
     graphiql: isDev || !!process.env.ENABLE_GRAPHIQL,
     // Use a fancier GraphiQL with `prettier` for formatting, and header editing.

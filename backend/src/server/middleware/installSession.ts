@@ -1,6 +1,6 @@
-import * as session from "express-session";
-import * as ConnectRedis from "connect-redis";
-import * as ConnectPgSimple from "connect-pg-simple";
+import session from "express-session";
+import ConnectRedis from "connect-redis";
+import ConnectPgSimple from "connect-pg-simple";
 import { Application } from "express";
 
 const RedisStore = ConnectRedis(session);

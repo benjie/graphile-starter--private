@@ -1,5 +1,5 @@
 // TODO: fix to 'import next' when next fixes the bug
-import * as next from "next";
+import next from "next";
 import { Application } from "express";
 
 if (!process.env.NODE_ENV) {
