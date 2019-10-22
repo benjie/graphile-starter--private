@@ -46,7 +46,6 @@ export default async () => {
     await middleware.installCypressServerCommand(app);
   }
   await middleware.installPostGraphile(app);
-  await middleware.installNext(app);
 
   /*
    * Error handling middleware

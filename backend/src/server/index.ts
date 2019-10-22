@@ -3,6 +3,7 @@
 import chalk from "chalk";
 import { createServer } from "http";
 import createApp from "./createApp";
+import installNext from "./middleware/installNext";
 // @ts-ignore
 const packageJson = require("../../../package.json");
 
@@ -11,6 +12,7 @@ async function main() {
 
   const app = await createApp();
 
+  await installNext(app);
   /*
    * Getting access to the HTTP server directly means that we can do things
    * with websockets if we need to (e.g. GraphQL subscriptions).
