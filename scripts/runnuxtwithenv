@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ -f ./.envvar ]; then
+  echo "Using existing .envvar"
+  . ./.envvar
+fi
+
+RUNYARN="$1"
+if [ "$RUNYARN" == "" ]; then
+  RUNYARN="dev"
+fi
+echo "Running: yarn \"workspace\" \"@graphile-starter/nuxtjs\" \"run\" \"$RUNYARN\""
+yarn "workspace" "@graphile-starter/nuxtjs" "run" "$RUNYARN"

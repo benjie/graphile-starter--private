@@ -22,9 +22,10 @@
     "dev:boot": "ts-node --inspect=0.0.0.0:9229 ../server/index.ts ",
     "dev:inspector:kill": "kill-port --port 9229",
     "-----------": "-------------",
+    "start": "../../../scripts/runnuxtwithenv dev",
     "dev": "nuxt-ts",
     "build": "nuxt-ts build",
-    "start": "nuxt-ts start",
+    "production": "yarn build && nuxt-ts start",
     "generate": "nuxt-ts generate"
   },
   "devDependencies": {
