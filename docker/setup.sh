@@ -40,14 +40,18 @@ curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compo
 chmod 755 /usr/local/bin/docker-compose
 
 
-# [Optional] Update a non-root user to match UID/GID - see https://aka.ms/vscode-remote/containers/non-root-user.
-if [ "$USER_UID" != "1000" ]; then
-  usermod --uid "$USER_UID" node;
-fi
+# on windows there is no USER_UID
+if [ "$USER_UID" != "" ]; then
+  echo "\$USER_UID given: $USER_UID";
+  # [Optional] Update a non-root user to match UID/GID - see https://aka.ms/vscode-remote/containers/non-root-user.
+  if [ "$USER_UID" != "1000" ]; then
+    usermod --uid "$USER_UID" node;
+  fi
 
-# Add the user to the docker group so they can access /var/run/docker.sock
-groupadd -g 999 docker
-usermod -a -G docker node
+  # Add the user to the docker group so they can access /var/run/docker.sock
+  groupadd -g 999 docker
+  usermod -a -G docker node
+fi
 
 # [Optional] Add add sudo support for non-root user
 echo node ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/node
