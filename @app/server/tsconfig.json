@@ -9,7 +9,6 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "strict": true,
-    "allowSyntheticDefaultImports": true,
     "noEmit": true,
     "resolveJsonModule": true,
     "suppressImplicitAnyIndexErrors": true,
