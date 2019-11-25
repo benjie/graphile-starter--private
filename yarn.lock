@@ -2794,7 +2794,7 @@
     signal-exit "^3.0.2"
     ua-parser-js "^0.7.20"
 
-"@nuxt/vue-app@2.10.2":
+"@nuxt/vue-app@2.10.2", "@nuxt/vue-app@^2.10.2":
   version "2.10.2"
   resolved "https://registry.yarnpkg.com/@nuxt/vue-app/-/vue-app-2.10.2.tgz#eb92ce5e8d7f5cc511626366d3a0fe080d2f9354"
   integrity sha512-aP5JWQaaimo/zMyoZg7aUqS6wYZq9jtDt/woKWOeuJJvnKE+youitazXbuVf+1l4c771b4AZMEuDW1duOfjDRA==
@@ -2870,7 +2870,7 @@
     webpack-node-externals "^1.7.2"
     webpackbar "^4.0.0"
 
-"@nuxtjs/apollo@latest":
+"@nuxtjs/apollo@^4.0.0-rc17":
   version "4.0.0-rc17"
   resolved "https://registry.yarnpkg.com/@nuxtjs/apollo/-/apollo-4.0.0-rc17.tgz#089ae5bdd70021d2a05076d1a5dfebdc5700cbe2"
   integrity sha512-HCtbfvfO2H1HQEKNmPczZfroKPt4SYPyuY6XEMbYW6S16SGr95644Ne7/wo7BW4OSXybpr/HYXKYceEGga9Z2g==
@@ -3568,6 +3568,11 @@
   version "10.17.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.5.tgz#c1920150f7b90708a7d0f3add12a06bc9123c055"
   integrity sha512-RElZIr/7JreF1eY6oD5RF3kpmdcreuQPjg5ri4oQ5g9sq7YWU8HkfB3eH8GwAwxf5OaCh0VPi7r4N/yoTGelrA==
+
+"@types/node@^12.12.12":
+  version "12.12.12"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.12.tgz#529bc3e73dbb35dd9e90b0a1c83606a9d3264bdb"
+  integrity sha512-MGuvYJrPU0HUwqF7LqvIj50RZUX23Z+m583KBygKYUZLlZ88n6w28XRNJRJgsHukLEnLz6w6SvxZoLgbr5wLqQ==
 
 "@types/nodemailer@^6.2.1":
   version "6.2.2"
@@ -9168,7 +9173,7 @@ graphql-upload@^8.0.2:
     http-errors "^1.7.3"
     object-path "^0.11.4"
 
-graphql@*, "graphql@14.0.2 - 14.2.0 || ^14.3.1", graphql@14.x, "graphql@>=0.9 <0.14 || ^14.0.2", "graphql@>=0.9 <15", "graphql@^0.6.0 || ^0.7.0 || ^0.8.0-b || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.2", graphql@^14.5.3, graphql@^14.5.8:
+graphql@*, "graphql@14.0.2 - 14.2.0 || ^14.3.1", "graphql@>=0.9 <0.14 || ^14.0.2", "graphql@>=0.9 <15", "graphql@^0.6.0 || ^0.7.0 || ^0.8.0-b || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.2", graphql@^14.5.3, graphql@^14.5.8:
   version "14.5.8"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.5.8.tgz#504f3d3114cb9a0a3f359bbbcf38d9e5bf6a6b3c"
   integrity sha512-MMwmi0zlVLQKLdGiMfWkgQD7dY/TUKt4L+zgJ/aR0Howebod3aNgP5JkgvAULiR2HPVZaP2VEElqtdidHweLkg==

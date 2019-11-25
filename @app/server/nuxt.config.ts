@@ -49,9 +49,80 @@ export default {
     },
   },
   buildModules: ["@nuxt/typescript-build"],
-  modules: ["@nuxtjs/axios", "~/modules/nuxt-postgraphile"],
+  modules: ["@nuxtjs/axios", "~/modules/nuxt-postgraphile", "@nuxtjs/apollo"],
   plugins: ["~/plugins/composition-api"],
   axios: {},
+  // Give apollo module options
+  apollo: {
+    tokenName: "apollo-token", // optional, default: apollo-token
+    cookieAttributes: {
+      /**
+       * Define when the cookie will be removed. Value can be a Number
+       * which will be interpreted as days from time of creation or a
+       * Date instance. If omitted, the cookie becomes a session cookie.
+       */
+      expires: 7, // optional, default: 7 (days)
+
+      /**
+       * Define the path where the cookie is available. Defaults to '/'
+       */
+      path: "/", // optional
+      /**
+       * Define the domain where the cookie is available. Defaults to
+       * the domain of the page where the cookie was created.
+       */
+      // domain: 'example.com', // optional
+
+      /**
+       * A Boolean indicating if the cookie transmission requires a
+       * secure protocol (https). Defaults to false.
+       */
+      secure: false,
+    },
+    includeNodeModules: true, // optional, default: false (this includes graphql-tag for node_modules folder)
+    authenticationType: "Basic", // optional, default: 'Bearer'
+    // (Optional) Default 'apollo' definition
+    defaultOptions: {
+      // See 'apollo' definition
+      // For example: default query options
+      $query: {
+        loadingKey: "loading",
+        fetchPolicy: "cache-and-network",
+      },
+    },
+    // optional
+    errorHandler: "~/plugins/apollo-error-handler.ts",
+    // required
+    clientConfigs: {
+      default: {
+        // required
+        httpEndpoint: "http://localhost:5678",
+        // optional
+        // override HTTP endpoint in browser only
+        browserHttpEndpoint: "/api/graphql",
+        // optional
+        // See https://www.apollographql.com/docs/link/links/http.html#options
+        httpLinkOptions: {
+          credentials: "same-origin",
+        },
+        // You can use `wss` for secure connection (recommended in production)
+        // Use `null` to disable subscriptions
+        wsEndpoint: "ws://localhost:5678", // optional
+        // LocalStorage token
+        tokenName: "apollo-token", // optional
+        // Enable Automatic Query persisting with Apollo Engine
+        persisting: false, // Optional
+        // Use websockets for everything (no HTTP)
+        // You need to pass a `wsEndpoint` for this to work
+        websocketsOnly: false, // Optional
+      },
+      test: {
+        httpEndpoint: "http://localhost:5000",
+        wsEndpoint: "ws://localhost:5000",
+        tokenName: "apollo-token",
+      },
+    },
+  },
   // TODO: import config from @app/config or similar
   postgraphile: {
     options: {

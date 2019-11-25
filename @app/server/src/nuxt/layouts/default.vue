@@ -34,7 +34,8 @@
     <Footer style="display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'">
       <div>
         <div>
-          Copyright &copy; {{new Date().getFullYear()}} {{ state.companyName }}. All rights reserved.
+          Copyright &copy; {{ new Date().getFullYear() }}
+          {{ state.companyName }}. All rights reserved.
           <span
             v-if="state.T_AND_C_URL"
           >
@@ -55,13 +56,34 @@
 
 <script lang="ts">
 import { Layout, Avatar, Row, Col, Dropdown, Icon, Menu } from "ant-design-vue";
-import { computed, createComponent, reactive } from "@vue/composition-api";
+import {
+  SetupContext,
+  computed,
+  createComponent,
+  reactive,
+} from "@vue/composition-api";
 import Warn from "~/components/Warn.vue";
 //! importing is not working, because of `module: "commonjs"` in @app/config
 import { projectName, companyName } from "@app/config"; // TODO: figure out how to properly import without throwing uncaught reference error about "export"
+import { SharedLayoutQuery } from "@app/graphql";
+
+// import * as apollo from "@nuxtjs/apollo";
+// const _qgl = SharedLayoutQuery;
+
+// import Component from 'vue-class-component'
+// import {Component} from   "@nuxt/types",
+// // import {Component} from   "node",
+// import {Component} from   "@nuxt/vue-app",
+// import {Component} from   "@nuxtjs/apollo"
+// Register the router hooks with their names
+// Component.registerHooks(["apollo"]);
 
 export default createComponent({
   name: "DefaultLayout",
+  apollo: {
+    // Simple query that will update the currentUser
+    currentUser: SharedLayoutQuery,
+  },
   components: {
     Avatar,
     Col,
@@ -76,7 +98,7 @@ export default createComponent({
     SubMenu: Menu.SubMenu,
     Warn,
   },
-  setup(_props, _ctx) {
+  setup(_props, ctx: SetupContext) {
     const state = reactive({
       title: "No title",
       projectName: projectName,
