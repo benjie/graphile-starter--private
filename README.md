@@ -1,4 +1,8 @@
-# PostGraphile Starter
+# Graphile Starter (Nuxt.js variant)
+
+This is a variant of the 
+[Graphile Starter](https://github.com/graphile/starter) project which
+replaces Next.js (React) with Nuxt.js (Vue).
 
 ## Purpose
 
